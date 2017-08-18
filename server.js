@@ -9,7 +9,7 @@ app.use(morgan('combined'));
 
 var articles={ 
 
-var 'article-one':{
+ 'article-one': {
     title:'Article-one | my imad tutorial',
     heading:'Introduction part 1',
     date:'Aug 18,2017',
@@ -20,7 +20,7 @@ var 'article-one':{
 		<b>Query String</b> repressents the additional parameters
 		</p> `
 },  
- var 'article-two':{   title:'Article-one | my imad tutorial',
+  'article-two':{   title:'Article-one | my imad tutorial',
     heading:'Introduction part 2',
     date:'Aug 19,2017',
     content:`<p> <b>Webapp<b> is a client-server application that runs in a web browser. <b>Browser</b> is a software that needs to be installed on the device to use the webapp.
@@ -77,7 +77,7 @@ app.get('/', function (req, res) {
 app.get('/:articleName',function(req, res){
    //res.send(createTemplate(articleOne)); 
    var articleName= req.param.articleName;
-   res.send(createTemplate(articles(articleName)));
+   res.send(createTemplate(articles[articleName]));
 });
 /*
 app.get('/article-two',function(req, res){
