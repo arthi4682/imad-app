@@ -9,9 +9,9 @@ app.use(morgan('combined'));
 
 var articles={ 
 
-articleOne:{
+'article-one':{
     title:'Article-one | my imad tutorial',
-    heading:'Introduction',
+    heading:'Introduction part 1',
     date:'Aug 18,2017',
     content:`<p> <b>Webapp<b> is a client-server application that runs in a web browser. <b>Browser</b> is a software that needs to be installed on the device to use the webapp.
 		<b>URL</b> is used to identify the server and the client.</p>
@@ -20,9 +20,9 @@ articleOne:{
 		<b>Query String</b> repressents the additional parameters
 		</p> `
 },  
- articleTwo:{   title:'Article-one | my imad tutorial',
-    heading:'Introduction',
-    date:'Aug 18,2017',
+ 'article-two':{   title:'Article-one | my imad tutorial',
+    heading:'Introduction part 2',
+    date:'Aug 19,2017',
     content:`<p> <b>Webapp<b> is a client-server application that runs in a web browser. <b>Browser</b> is a software that needs to be installed on the device to use the webapp.
 		<b>URL</b> is used to identify the server and the client.</p>
 		<p>
@@ -74,13 +74,15 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req, res){
-   res.send(createTemplate(articleOne)); 
+app.get('/:articleName',function(req, res){
+   //res.send(createTemplate(articleOne)); 
+   var articleName= req.param.articleName;
+   res.send(createTemplate(articles(articleName)));
 });
-
+/*
 app.get('/article-two',function(req, res){
    res.send(createTemplate(articleTwo)); 
-});
+});*/
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
