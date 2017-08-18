@@ -6,7 +6,10 @@ var app = express();
 app.use(morgan('combined'));
 
 //reducing the code 
-var articleOne={
+
+var articles={ 
+
+articleOne:{
     title:'Article-one | my imad tutorial',
     heading:'Introduction',
     date:'Aug 18,2017',
@@ -16,9 +19,19 @@ var articleOne={
 		<b> Protocol</b> identifies the rules of the communication.<b>Hostname</b> identified the server.<b>Path</b> defines the resource being requested.
 		<b>Query String</b> repressents the additional parameters
 		</p> `
-    
-    
+},  
+ articleTwo:{   title:'Article-one | my imad tutorial',
+    heading:'Introduction',
+    date:'Aug 18,2017',
+    content:`<p> <b>Webapp<b> is a client-server application that runs in a web browser. <b>Browser</b> is a software that needs to be installed on the device to use the webapp.
+		<b>URL</b> is used to identify the server and the client.</p>
+		<p>
+		<b> Protocol</b> identifies the rules of the communication.<b>Hostname</b> identified the server.<b>Path</b> defines the resource being requested.
+		<b>Query String</b> repressents the additional parameters
+		</p>` }   
 };
+
+
 
 
 function createTemplate(data){
@@ -43,10 +56,10 @@ var htmlTemplate=`
 	<div>
 	<a href="/">Home</a>
 	</div>
-
+    <div class ="container">
 	<h3> ${heading}</h3>
 	<h4>${date}</h4>
-	<div class ="container">
+	
 	${content}
 		
 	</div>
@@ -65,7 +78,9 @@ app.get('/article-one',function(req, res){
    res.send(createTemplate(articleOne)); 
 });
 
-
+app.get('/article-two',function(req, res){
+   res.send(createTemplate(articleTwo)); 
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
