@@ -5,13 +5,68 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+//reducing the code 
+var articleOne={
+    title:'Article-one | my imad tutorial',
+    heading:'Introduction',
+    date:'Aug 18,2017',
+    content:`<p> <b>Webapp<b> is a client-server application that runs in a web browser. <b>Browser</b> is a software that needs to be installed on the device to use the webapp.
+		<b>URL</b> is used to identify the server and the client.</p>
+		<p>
+		<b> Protocol</b> identifies the rules of the communication.<b>Hostname</b> identified the server.<b>Path</b> defines the resource being requested.
+		<b>Query String</b> repressents the additional parameters
+		</p> `
+    
+    
+};
+
+
+function createTemplate(data){
+    
+var title=data.title;
+var date= data.date;
+var heading= data.heading;
+var content=data.content;
+
+var htmlTemplate=`
+ <html>
+	<head>
+		<title>	
+		${title}
+		</title>
+		<meta name="viewport" content= "width-device-width" />
+		<link href="ui/style.css" rel="stylesheet" />
+
+	</head>
+
+	<body>
+	<div>
+	<a href="/">Home</a>
+	</div>
+
+	<h3> ${heading}</h3>
+	<h4>${date}</h4>
+	<div class ="container">
+	${content}
+		
+	</div>
+	</body>
+
+</html> `
+;
+
+return htmlTemplate;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one',function(req, res){
-   res.send('Article one requested and will be served here'); 
+   res.send(createTemplate(articleOne)); 
 });
+
+
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
