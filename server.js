@@ -9,7 +9,7 @@ app.use(morgan('combined'));
 
 var articles={ 
 
-'article-one':{
+var 'article-one':{
     title:'Article-one | my imad tutorial',
     heading:'Introduction part 1',
     date:'Aug 18,2017',
@@ -20,7 +20,7 @@ var articles={
 		<b>Query String</b> repressents the additional parameters
 		</p> `
 },  
- 'article-two':{   title:'Article-one | my imad tutorial',
+ var 'article-two':{   title:'Article-one | my imad tutorial',
     heading:'Introduction part 2',
     date:'Aug 19,2017',
     content:`<p> <b>Webapp<b> is a client-server application that runs in a web browser. <b>Browser</b> is a software that needs to be installed on the device to use the webapp.
